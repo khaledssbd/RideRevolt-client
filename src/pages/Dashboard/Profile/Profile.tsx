@@ -44,7 +44,7 @@ const Profile = () => {
           </h4>
           <h4 className="text-base font-medium text-left">
             Role:
-            <span className="text-amber-500 dark:text-white ml-2">
+            <span className="text-amber-500 dark:text-white ml-2 capitalize">
               {user?.role}
             </span>
           </h4>

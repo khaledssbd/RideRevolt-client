@@ -73,8 +73,8 @@ const AddProduct = () => {
                 message: 'Name must have minimum 2 characters!',
               },
               maxLength: {
-                value: 40,
-                message: "Name can't exceed 40 characters!",
+                value: 80,
+                message: "Name can't exceed 80 characters!",
               },
             }}
             render={({ field }) => (
@@ -144,8 +144,8 @@ const AddProduct = () => {
                 message: 'You must write a brand!',
               },
               maxLength: {
-                value: 35,
-                message: "Brand can't exceed 35 characters!",
+                value: 45,
+                message: "Brand can't exceed 45 characters!",
               },
             }}
             render={({ field }) => (
@@ -181,8 +181,8 @@ const AddProduct = () => {
                 message: 'You must write a model!',
               },
               maxLength: {
-                value: 15,
-                message: "Model can't exceed 15 characters!",
+                value: 75,
+                message: "Model can't exceed 75 characters!",
               },
             }}
             render={({ field }) => (

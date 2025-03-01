@@ -1,4 +1,4 @@
-import SideImg from '@/assets/Images/Revolt-RV400.webp';
+import SideImg from '@/assets/Images/raleigh-edux.png';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { Input } from '@/components/ui/input';
@@ -61,7 +61,7 @@ const Register = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:m-24">
       {/* colum-1 */}
-      <div className="hidden md:flex h-1/2 lg:h-auto">
+      <div className="hidden md:flex h-1/2 lg:h-2/3">
         <img src={SideImg} alt="Login Image" height={540} width={540} />
       </div>
 
@@ -103,6 +103,7 @@ const Register = () => {
                       className="text-black dark:text-white"
                       type="text"
                       placeholder="Your Name..."
+                      autoComplete="name"
                       {...field}
                       value={field.value || ''}
                     />
@@ -178,6 +179,7 @@ const Register = () => {
                       className="text-black dark:text-white"
                       type="text"
                       placeholder="Your email..."
+                      autoComplete="email"
                       {...field}
                       value={field.value || ''}
                     />
@@ -287,6 +289,7 @@ const Register = () => {
                         className="text-black dark:text-white"
                         type={showPassword ? 'text' : 'password'}
                         placeholder="Your password..."
+                        autoComplete="new-password"
                         {...field}
                         value={field.value || ''}
                       />
@@ -336,6 +339,7 @@ const Register = () => {
                         className="text-black dark:text-white"
                         type={showPassword ? 'text' : 'password'}
                         placeholder="Your confirm password..."
+                        autoComplete="new-password"
                         {...field}
                         value={field.value || ''}
                       />

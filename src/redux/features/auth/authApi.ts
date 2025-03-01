@@ -29,7 +29,7 @@ const authApi = baseApi.injectEndpoints({
       }),
     }),
 
-    // forgot Password
+    // update Profile
     updateProfile: builder.mutation({
       query: userInfo => ({
         url: '/auth/update-profile',

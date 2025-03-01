@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import cToast from '@/components/ReactHotToast';
 import { Input } from '@/components/ui/input';
+// import LoadingSpinner from '@/components/LoadingSpinner';
+import AllProductsSkeleton from './AllProductSkeleton';
 import {
   Sheet,
   SheetClose,
@@ -30,7 +32,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import LoadingSpinner from '@/components/LoadingSpinner';
 
 const AllProducts = () => {
   const form = useForm();
@@ -102,10 +103,8 @@ const AllProducts = () => {
     cToast.success('Filters applied successfully!');
   };
 
-  if (isLoading || isLoading2) return <LoadingSpinner />;
+  if (isLoading || isLoading2) return <AllProductsSkeleton />;
 
-
-  console.log({ productsData });
   return (
     <div>
       <div className="flex justify-around items-center">

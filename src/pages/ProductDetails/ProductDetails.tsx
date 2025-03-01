@@ -4,15 +4,15 @@ import { FaCalendar } from 'react-icons/fa';
 import moment from 'moment';
 import { AiFillHome } from 'react-icons/ai';
 import { Button } from '@/components/ui/button';
-import LoadingSpinner from '@/components/LoadingSpinner';
+import ProductDetailsSkeleton from './ProductDetailsSkeleton';
 
 const ProductDetails = () => {
   const { productId } = useParams();
   const { data: product, isLoading } = useGetProductByIdQuery(productId);
 
-  if (isLoading) return <LoadingSpinner />;
-
-  return (
+  return isLoading ? (
+    <ProductDetailsSkeleton />
+  ) : (
     <article className="w-4/5 rounded-lg mx-auto">
       <h2 className="text-center text-4xl font-semibold my-5">
         {product?.name}

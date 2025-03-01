@@ -1,5 +1,5 @@
-import SideImg from '@/assets/Images/Revolt-RV400-BRZ.webp';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import SideImg from '@/assets/Images/cannondale-topstone.png';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { Input } from '@/components/ui/input';
 import { useLoginMutation } from '@/redux/features/auth/authApi';
@@ -31,6 +31,8 @@ const Login = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectUser);
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
 
   const handleLogin: SubmitHandler<FieldValues> = async data => {
     const res = await login(data).unwrap();
@@ -40,7 +42,9 @@ const Login = () => {
       const user = verifyToken(res.data.accessToken) as TUserFromToken;
       dispatch(setUser({ user: user, token: res.data.accessToken }));
       cToast.success(res?.message);
-      navigate('/');
+      setTimeout(() => {
+        navigate(from, { replace: true });
+      }, 0);
     }
   };
 
@@ -93,6 +97,7 @@ const Login = () => {
                       className="text-black dark:text-white"
                       type="text"
                       placeholder="Your email..."
+                      autoComplete="email"
                       {...field}
                       value={field.value || ''}
                     />
@@ -163,6 +168,7 @@ const Login = () => {
                         className="text-black dark:text-white"
                         type={showPassword ? 'text' : 'password'}
                         placeholder="Your password..."
+                        autoComplete="current-password"
                         {...field}
                         value={field.value || ''}
                       />

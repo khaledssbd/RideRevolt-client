@@ -4,13 +4,10 @@ import { selectUser } from '@/redux/features/auth/authSlice';
 import { useGetOrdersByUserEmailQuery } from '@/redux/features/order/orderApi';
 import { useAppSelector } from '@/redux/hooks';
 import moment from 'moment';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Orders = () => {
   const user = useAppSelector(selectUser);
-  const [searchParams] = useSearchParams();
-  const orderId = searchParams.get('order_id');
-
   const { data: orders, isLoading } = useGetOrdersByUserEmailQuery(user?.email);
 
   if (isLoading) return <LoadingSpinner />;
@@ -91,48 +88,46 @@ const Orders = () => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100 border-t border-gray-100">
-                {orders?.slice().reverse().map(order => (
-                  <tr
-                    key={order._id}
-                    className={`hover:bg-gray-50 ${
-                      orderId === order.transaction.id ? 'bg-amber-300' : ''
-                    }`}
-                  >
-                    <th className="flex gap-3 px-6 py-4 font-normal text-gray-900">
-                      <div className="relative h-10 w-10">
-                        <img
-                          className="h-full w-full rounded-full object-cover object-center"
-                          src={order.product.imageUrl}
-                          alt={order.product.name || 'No name'}
-                        />
-                        <span className="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
-                      </div>
-                      <div className="text-sm">
-                        <div className="font-medium text-gray-700">
-                          {order.product.name}
+                {orders
+                  ?.slice()
+                  .reverse()
+                  .map(order => (
+                    <tr key={order?._id} className="hover:bg-gray-50">
+                      <th className="flex gap-3 px-6 py-4 font-normal text-gray-900">
+                        <div className="relative h-10 w-10">
+                          <img
+                            className="h-full w-full rounded-full object-cover object-center"
+                            src={order?.product?.imageUrl}
+                            alt={order?.product?.name || 'No name'}
+                          />
+                          <span className="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
                         </div>
-                        <div className="text-gray-400">
-                          {order.product.model}
+                        <div className="text-sm">
+                          <div className="font-medium text-gray-700">
+                            {order?.product?.name}
+                          </div>
+                          <div className="text-gray-400">
+                            {order?.product?.model}
+                          </div>
                         </div>
-                      </div>
-                    </th>
-                    <td className="px-6 py-4">{order.product.brand}</td>
-                    <td className="px-6 py-4">{order.product.category}</td>
-                    <td className="px-6 py-4">{order.quantity}</td>
-                    <td className="px-6 py-4">{order.totalPrice}</td>
-                    <td className="px-6 py-4">{order.status}</td>
-                    <td className="px-6 py-4">{order.transaction.id}</td>
-                    <td className="px-6 py-4">
-                      {/* {new Date(product?.createdAt).toLocaleDateString()} */}
-                      {moment(new Date(order.estimatedDeliveryDate)).format(
-                        'MMMM Do YYYY'
-                      )}
-                      {/* {moment(new Date(order.estimatedDeliveryDate)).format(
+                      </th>
+                      <td className="px-6 py-4">{order?.product?.brand}</td>
+                      <td className="px-6 py-4">{order?.product?.category}</td>
+                      <td className="px-6 py-4">{order?.quantity}</td>
+                      <td className="px-6 py-4">{order?.totalPrice}</td>
+                      <td className="px-6 py-4">{order?.status}</td>
+                      <td className="px-6 py-4">{order?.transaction?.id}</td>
+                      <td className="px-6 py-4">
+                        {/* {new Date(product?.createdAt).toLocaleDateString()} */}
+                        {moment(new Date(order.estimatedDeliveryDate)).format(
+                          'MMMM Do YYYY'
+                        )}
+                        {/* {moment(new Date(order.estimatedDeliveryDate)).format(
                         'MMMM'
                       )} */}
-                    </td>
-                  </tr>
-                ))}
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>

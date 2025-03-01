@@ -47,7 +47,7 @@ const AllProductsCard = ({ product }: TProductProps) => {
           </div>
         </div>
 
-        <p className="text-gray-400 mt-2">
+        <p className="text-gray-400 mt-2 text-justify">
           {product.description.length > 100
             ? product.description.slice(0, 60) + '...'
             : product.description}

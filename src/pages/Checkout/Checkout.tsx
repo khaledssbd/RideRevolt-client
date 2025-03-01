@@ -5,7 +5,6 @@ import { useState } from 'react';
 import cToast from '@/components/ReactHotToast';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { Input } from '@/components/ui/input';
-import LoadingSpinner from '@/components/LoadingSpinner';
 import { useCreateOrderMutation } from '@/redux/features/order/orderApi';
 import { TbFidgetSpinner } from 'react-icons/tb';
 import {
@@ -15,6 +14,7 @@ import {
   FormItem,
   FormLabel,
 } from '@/components/ui/form';
+import CheckoutSkeleton from './CheckoutSkeleton';
 
 const Checkout = () => {
   const form = useForm();
@@ -41,11 +41,9 @@ const Checkout = () => {
     }
   };
 
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
-
-  return (
+  return isLoading ? (
+    <CheckoutSkeleton />
+  ) : (
     <div className="w-4/5 rounded-lg mx-auto">
       {/* col-1: name & brand */}
       <div className="text-lg font-semibold w-fit mx-auto my-5">

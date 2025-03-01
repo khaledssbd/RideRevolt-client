@@ -14,17 +14,14 @@ import cToast from '@/components/ReactHotToast';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useResetPasswordMutation } from '@/redux/features/auth/authApi';
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
-import { useAppDispatch } from '@/redux/hooks';
-import { logout, setUser } from '@/redux/features/auth/authSlice';
 
 const ResetPassword = () => {
   const form = useForm();
-  const dispatch = useAppDispatch();
   const [searchParams] = useSearchParams();
   const token = searchParams.get('token');
 
-  if (token) {
-    dispatch(setUser({ user: null, token: token }));
+  if (!token) {
+    cToast.error('Something went wrong! Please try again..!');
   }
 
   const navigate = useNavigate();
@@ -32,10 +29,10 @@ const ResetPassword = () => {
   const [resetPassword, { isLoading }] = useResetPasswordMutation();
 
   const handleResetPassword: SubmitHandler<FieldValues> = async data => {
-    const res = await resetPassword(data).unwrap();
+    const updateData = { ...data, token };
+    const res = await resetPassword(updateData).unwrap();
 
     if (res?.success) {
-      dispatch(logout());
       form.reset();
       cToast.success(`${res?.message}... Login Now!`);
       navigate('/login');

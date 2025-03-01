@@ -22,6 +22,7 @@ import ManageProducts from '@/pages/Dashboard/AdminRoute/ManageProducts';
 import ManageOrders from '@/pages/Dashboard/AdminRoute/ManageOrders';
 import AddProduct from '@/pages/Dashboard/AdminRoute/AddProduct';
 import ResetPassword from '@/pages/ResetPassword/ResetPassword';
+import VerifyOrder from '@/pages/Dashboard/Orders/VerifyOrder/VerifyOrder';
 
 const router = createBrowserRouter([
   {
@@ -115,6 +116,16 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <CustomerRoute>
               <Orders />
+            </CustomerRoute>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: 'verify-order',
+        element: (
+          <PrivateRoute>
+            <CustomerRoute>
+              <VerifyOrder />
             </CustomerRoute>
           </PrivateRoute>
         ),

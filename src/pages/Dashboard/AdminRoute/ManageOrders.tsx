@@ -1,25 +1,11 @@
 import LoadingSpinner from '@/components/LoadingSpinner';
-import cToast from '@/components/ReactHotToast';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import {
-  useGetAllOrdersQuery,
-  useVerifyOrderMutation,
-} from '@/redux/features/order/orderApi';
+import { useGetAllOrdersQuery } from '@/redux/features/order/orderApi';
 
 const ManageOrders = () => {
   const { data: allOrders, isLoading } = useGetAllOrdersQuery(undefined);
-  const [verifyOrder] = useVerifyOrderMutation();
-
-  // change User Status
-  const handleVerifyOrder = async (order_id: string) => {
-    const res = await verifyOrder({ order_id }).unwrap();
-
-    if (res?.success) {
-      cToast.success(res?.message);
-    }
-  };
 
   if (isLoading) return <LoadingSpinner />;
 
@@ -96,12 +82,6 @@ const ManageOrders = () => {
                   >
                     Deliverity Date
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-4 font-medium text-gray-900"
-                  >
-                    Verify
-                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100 border-t border-gray-100">
@@ -159,17 +139,6 @@ const ManageOrders = () => {
                         {/* {moment(new Date(order.estimatedDeliveryDate)).format(
                               'MMMM'
                             )} */}
-                      </td>
-                      <td>
-                        <Button
-                          onClick={() =>
-                            handleVerifyOrder(order.transaction.id)
-                          }
-                          variant="default"
-                          className="text-black bg-amber-500 hover:bg-black hover:text-amber-500  dark:text-black dark:hover:bg-black dark:hover:text-white"
-                        >
-                          Verify
-                        </Button>
                       </td>
                     </tr>
                   ))}

@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 import { Button } from '../../components/ui/button';
-import bike from '@/assets/Images/Revolt-RV1+.webp';
+import bike from '@/assets/Images/trek-marlin-7.png';
 import { Link } from 'react-router-dom';
 
 const HeroSection = () => {

@@ -7,8 +7,8 @@
 
 ## GitHub Repository:
 
-- [Client-Repository]()
-- [Server-Repository]()
+- [Client-Repository](https://github.com/khaledssbd/RideRevolt-client)
+- [Server-Repository](https://github.com/khaledssbd/RideRevolt-server)
 
 ---
 
