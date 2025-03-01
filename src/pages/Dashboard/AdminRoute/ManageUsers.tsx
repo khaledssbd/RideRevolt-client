@@ -76,22 +76,22 @@ const ManageUsers = () => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100 border-t border-gray-100">
-                {allUsers.map(user => (
-                  <tr key={user._id} className="hover:bg-gray-50">
+                {allUsers?.map(user => (
+                  <tr key={user?._id} className="hover:bg-gray-50">
                     <th className="flex gap-3 px-6 py-4 font-normal text-gray-900">
                       <div className="relative h-10 w-10">
                         <img
                           className="h-full w-full rounded-full object-cover object-center"
-                          src={user.image}
-                          alt={user.name || 'No name'}
+                          src={user?.image}
+                          alt={user?.name || 'No name'}
                         />
                         <span className="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
                       </div>
                       <div className="text-sm">
                         <div className="font-medium text-gray-700">
-                          {user.name}
+                          {user?.name}
                         </div>
-                        <div className="text-gray-400">{user.email}</div>
+                        <div className="text-gray-400">{user?.email}</div>
                       </div>
                     </th>
                     <td>
@@ -99,9 +99,9 @@ const ManageUsers = () => {
                         className="p-2 border rounded-lg focus:outline-green-500"
                         required
                         onChange={e =>
-                          handleUserStatusChange(e.target.value, user._id)
+                          handleUserStatusChange(e.target.value, user?._id)
                         }
-                        defaultValue={user.status}
+                        defaultValue={user?.status}
                       >
                         <option value="in-progress">In-progress</option>
                         <option value="blocked">Blocked</option>
@@ -110,20 +110,20 @@ const ManageUsers = () => {
                     <td className="px-6 py-4 capitalize">
                       <span
                         className={`inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-1 text-xs font-semibold ${
-                          user.isDeleted ? 'text-red-600' : 'text-green-600'
+                          user?.isDeleted ? 'text-red-600' : 'text-green-600'
                         }`}
                       >
                         <span
                           className={cn(
                             'h-1.5 w-1.5 rounded-full',
-                            user.isDeleted ? 'bg-red-600' : 'bg-green-600'
+                            user?.isDeleted ? 'bg-red-600' : 'bg-green-600'
                           )}
                         ></span>
-                        {user.isDeleted ? 'Yes' : 'No'}
+                        {user?.isDeleted ? 'Yes' : 'No'}
                       </span>
                     </td>
-                    <td className="px-6 py-4 capitalize">{user.gender}</td>
-                    <td className="px-6 py-4 capitalize">{user.role}</td>
+                    <td className="px-6 py-4 capitalize">{user?.gender}</td>
+                    <td className="px-6 py-4 capitalize">{user?.role}</td>
                     {/* <td className="px-6 py-4">
                       <button onClick={() => handleDelete(user._id)}>
                         <img

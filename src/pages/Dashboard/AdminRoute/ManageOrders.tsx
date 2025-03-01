@@ -88,7 +88,7 @@ const ManageOrders = () => {
                 {allOrders
                   ?.slice()
                   .reverse()
-                  .map(order => (
+                  ?.map(order => (
                     <tr key={order?._id} className="hover:bg-gray-50">
                       <th className="flex gap-3 px-6 py-4 font-normal text-gray-900">
                         <div className="relative h-10 w-10">

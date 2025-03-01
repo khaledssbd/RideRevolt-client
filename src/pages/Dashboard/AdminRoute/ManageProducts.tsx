@@ -99,47 +99,47 @@ const ManageProducts = () => {
               </thead>
               <tbody className="divide-y divide-gray-100 border-t border-gray-100">
                 {allProducts?.data?.map(product => (
-                  <tr key={product._id} className="hover:bg-gray-50">
+                  <tr key={product?._id} className="hover:bg-gray-50">
                     <th className="flex gap-3 px-6 py-4 font-normal text-gray-900">
                       <div className="relative h-10 w-10">
                         <img
                           className="h-full w-full rounded-full object-cover object-center"
-                          src={product.imageUrl}
-                          alt={product.name || 'No name'}
+                          src={product?.imageUrl}
+                          alt={product?.name || 'No name'}
                         />
                         <span className="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
                       </div>
                       <div className="text-sm">
                         <div className="font-medium text-gray-700">
-                          {product.name}
+                          {product?.name}
                         </div>
-                        <div className="text-gray-400">{product.model}</div>
+                        <div className="text-gray-400">{product?.model}</div>
                       </div>
                     </th>
-                    <td className="px-6 py-4">{product.brand}</td>
-                    <td className="px-6 py-4">{product.category}</td>
-                    <td className="px-6 py-4">{product.quantity}</td>
-                    <td className="px-6 py-4">{product.price}</td>
+                    <td className="px-6 py-4">{product?.brand}</td>
+                    <td className="px-6 py-4">{product?.category}</td>
+                    <td className="px-6 py-4">{product?.quantity}</td>
+                    <td className="px-6 py-4">{product?.price}</td>
                     <td className="px-6 py-4">
                       <span
                         className={`inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-1 text-xs font-semibold ${
-                          product.isDeleted ? 'text-red-600' : 'text-green-600'
+                          product?.isDeleted ? 'text-red-600' : 'text-green-600'
                         }`}
                       >
                         <span
                           className={cn(
                             'h-1.5 w-1.5 rounded-full',
-                            product.isDeleted ? 'bg-red-600' : 'bg-green-600'
+                            product?.isDeleted ? 'bg-red-600' : 'bg-green-600'
                           )}
                         ></span>
-                        {product.isDeleted ? 'Yes' : 'No'}
+                        {product?.isDeleted ? 'Yes' : 'No'}
                       </span>
                     </td>
 
                     <td className="px-6 py-4">
                       {/* {new Date(product?.createdAt).toLocaleDateString()} */}
                       {/* {moment(new Date(product?.createdAt)).format('MMMM Do YYYY')} */}
-                      {moment(new Date(product.createdAt)).format('MMMM')}
+                      {moment(new Date(product?.createdAt)).format('MMMM')}
                     </td>
 
                     <td className="px-6 py-4">
@@ -147,7 +147,7 @@ const ManageProducts = () => {
                     </td>
 
                     <td className="px-6 py-4">
-                      <DeleteProductDialog productId={product._id} />
+                      <DeleteProductDialog productId={product?._id} />
                     </td>
                   </tr>
                 ))}
