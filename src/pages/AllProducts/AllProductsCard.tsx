@@ -44,6 +44,7 @@ const AllProductsCard = ({ product }: TProductProps) => {
             {/* {new Date(product?.createdAt).toLocaleDateString()} */}
             {/* {moment(new Date(product?.createdAt)).format('MMMM Do YYYY')} */}
             {moment(new Date(product.createdAt)).format('MMMM')}
+            {/* {moment(new Date(product.createdAt)).format("dddd, MMMM D, YYYY")} */}
           </div>
         </div>
 

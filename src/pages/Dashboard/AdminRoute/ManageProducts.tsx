@@ -139,7 +139,7 @@ const ManageProducts = () => {
                     <td className="px-6 py-4">
                       {/* {new Date(product?.createdAt).toLocaleDateString()} */}
                       {/* {moment(new Date(product?.createdAt)).format('MMMM Do YYYY')} */}
-                      {moment(new Date(product?.createdAt)).format('MMMM')}
+                      {moment(new Date(product?.createdAt)).format('DD-MMMM-YY')}
                     </td>
 
                     <td className="px-6 py-4">

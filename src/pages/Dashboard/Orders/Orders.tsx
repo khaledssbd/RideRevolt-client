@@ -119,12 +119,12 @@ const Orders = () => {
                       <td className="px-6 py-4">{order?.transaction?.id}</td>
                       <td className="px-6 py-4">
                         {/* {new Date(product?.createdAt).toLocaleDateString()} */}
-                        {moment(new Date(order.estimatedDeliveryDate)).format(
-                          'MMMM Do YYYY'
-                        )}
                         {/* {moment(new Date(order.estimatedDeliveryDate)).format(
-                        'MMMM'
-                      )} */}
+                          'MMMM Do YYYY'
+                        )} */}
+                        {moment(new Date(order.estimatedDeliveryDate)).format(
+                          'DD-MMMM-YY'
+                        )}
                       </td>
                     </tr>
                   ))}

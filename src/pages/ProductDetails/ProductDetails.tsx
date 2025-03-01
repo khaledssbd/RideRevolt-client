@@ -35,7 +35,7 @@ const ProductDetails = () => {
           {/* {new Date(product?.createdAt).toLocaleDateString()} */}
           {/* {moment(new Date(product?.createdAt)).format('MMMM Do YYYY')} */}
           {product?.createdAt
-            ? moment(new Date(product.createdAt)).format('MMMM')
+            ? moment(new Date(product.createdAt)).format('DD-MMMM-YY')
             : 'N/A'}
         </p>
         {/* brand */}
