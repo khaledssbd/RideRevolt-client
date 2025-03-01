@@ -89,31 +89,31 @@ const ManageOrders = () => {
                   ?.slice()
                   .reverse()
                   .map(order => (
-                    <tr key={order._id} className="hover:bg-gray-50">
+                    <tr key={order?._id} className="hover:bg-gray-50">
                       <th className="flex gap-3 px-6 py-4 font-normal text-gray-900">
                         <div className="relative h-10 w-10">
                           <img
                             className="h-full w-full rounded-full object-cover object-center"
-                            src={order.product.imageUrl}
-                            alt={order.product.name || 'No name'}
+                            src={order?.product?.imageUrl}
+                            alt={order?.product?.name || 'No name'}
                           />
                           <span className="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
                         </div>
                         <div className="text-sm">
                           <div className="font-medium text-gray-700">
-                            {order.product.name}
+                            {order?.product?.name}
                           </div>
                           <div className="text-gray-400">
-                            {order.product.model}
+                            {order?.product?.model}
                           </div>
                         </div>
                       </th>
-                      <td className="px-6 py-4">{order.product.category}</td>
-                      <td className="px-6 py-4">{order.user.email}</td>
-                      <td className="px-6 py-4">{order.quantity}</td>
-                      <td className="px-6 py-4">{order.totalPrice}</td>
+                      <td className="px-6 py-4">{order?.product?.category}</td>
+                      <td className="px-6 py-4">{order?.user?.email}</td>
+                      <td className="px-6 py-4">{order?.quantity}</td>
+                      <td className="px-6 py-4">{order?.totalPrice}</td>
                       <td className="px-6 py-4">
-                        {order.status}
+                        {order?.status}
 
                         {/* <select
                           className="p-2 border rounded-lg focus:outline-green-500"
@@ -130,10 +130,10 @@ const ManageOrders = () => {
                           <option value="Completed">Completed</option>
                         </select> */}
                       </td>
-                      <td className="px-6 py-4">{order.transaction.id}</td>
+                      <td className="px-6 py-4">{order?.transaction.id}</td>
                       <td className="px-6 py-4">
                         {/* {new Date(product?.createdAt).toLocaleDateString()} */}
-                        {moment(new Date(order.estimatedDeliveryDate)).format(
+                        {moment(new Date(order?.estimatedDeliveryDate)).format(
                           'MMMM Do YYYY'
                         )}
                         {/* {moment(new Date(order.estimatedDeliveryDate)).format(
