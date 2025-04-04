@@ -106,7 +106,7 @@ const ChangePassword = () => {
                     <Input
                       className="text-black dark:text-white"
                       type={showPassword ? 'text' : 'password'}
-                      placeholder="Your password..."
+                      placeholder="Old Password..."
                       {...field}
                       value={field.value || ''}
                     />
@@ -189,7 +189,7 @@ const ChangePassword = () => {
                     <Input
                       className="text-black dark:text-white"
                       type={showPassword ? 'text' : 'password'}
-                      placeholder="Your password..."
+                      placeholder="New Password..."
                       {...field}
                       value={field.value || ''}
                     />
@@ -238,7 +238,7 @@ const ChangePassword = () => {
                     <Input
                       className="text-black dark:text-white"
                       type={showPassword ? 'text' : 'password'}
-                      placeholder="Your password..."
+                      placeholder="Confirm Password..."
                       {...field}
                       value={field.value || ''}
                     />

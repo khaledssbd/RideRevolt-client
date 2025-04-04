@@ -3,7 +3,7 @@ import { TProduct, TData, TQueryParam, TResponseRedux } from '@/types';
 
 const productApi = baseApi.injectEndpoints({
   endpoints: builder => ({
-    // add a new bike
+    // add a new Product
     postProduct: builder.mutation({
       query: product => ({
         url: '/products',
@@ -39,7 +39,7 @@ const productApi = baseApi.injectEndpoints({
       },
     }),
 
-    // Get Bike By Id
+    // Get Product By Id
     getProductById: builder.query({
       query: id => ({
         url: `/products/${id}`,
@@ -49,7 +49,7 @@ const productApi = baseApi.injectEndpoints({
       transformResponse: (response: TResponseRedux<TProduct>) => response.data,
     }),
 
-    // update a bike
+    // update a Product
     updateProduct: builder.mutation({
       query: ({ id, formData }) => ({
         url: `/products/update/${id}`,

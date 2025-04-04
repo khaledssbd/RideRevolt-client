@@ -19,8 +19,9 @@ const ResetPassword = () => {
   const form = useForm();
   const [searchParams] = useSearchParams();
   const token = searchParams.get('token');
+  const email = searchParams.get('email');
 
-  if (!token) {
+  if (!token || !email) {
     cToast.error('Something went wrong! Please try again..!');
   }
 
@@ -29,7 +30,12 @@ const ResetPassword = () => {
   const [resetPassword, { isLoading }] = useResetPasswordMutation();
 
   const handleResetPassword: SubmitHandler<FieldValues> = async data => {
-    const updateData = { ...data, token };
+    if (!token || !email) {
+      cToast.error('Something went wrong! Please try again..!');
+      return;
+    }
+
+    const updateData = { ...data, token, email };
     const res = await resetPassword(updateData).unwrap();
 
     if (res?.success) {
@@ -50,7 +56,7 @@ const ResetPassword = () => {
           onSubmit={form.handleSubmit(handleResetPassword)}
         >
           {/* FormField for email */}
-          <FormField
+          {/* <FormField
             control={form.control}
             name="email"
             rules={{
@@ -88,7 +94,7 @@ const ResetPassword = () => {
                 )}
               </FormItem>
             )}
-          />
+          /> */}
 
           {/* FormField for newPassword */}
           <FormField

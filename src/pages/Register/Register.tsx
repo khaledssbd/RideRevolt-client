@@ -3,7 +3,6 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { Input } from '@/components/ui/input';
 import { useRegisterMutation } from '@/redux/features/auth/authApi';
-
 import { Button } from '@/components/ui/button';
 import { TbFidgetSpinner } from 'react-icons/tb';
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';

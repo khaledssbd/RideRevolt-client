@@ -12,7 +12,7 @@ import { TBaseApiError } from '../../types';
 import cToast from '@/components/ReactHotToast';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: `${import.meta.env.VITE_MY_BACKEND}/api`,
+  baseUrl: `${import.meta.env.VITE_MY_BACKEND}/api/v1`,
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
@@ -34,7 +34,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
   let result = await baseQuery(args, api, extraOptions);
 
   // matching all errors
-  if (result?.error) {
+  if (result?.error && result?.error?.status !== 401) {
     const errorData = result.error as TBaseApiError;
     cToast.error(errorData?.data?.message as string);
   }
@@ -44,7 +44,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
     //* Send Refresh token automatically
 
     const res = await fetch(
-      `${import.meta.env.VITE_MY_BACKEND}/api/auth/refresh-token`,
+      `${import.meta.env.VITE_MY_BACKEND}/api/v1/auth/refresh-token`,
       {
         method: 'POST',
         credentials: 'include',
@@ -75,6 +75,6 @@ const baseQueryWithRefreshToken: BaseQueryFn<
 export const baseApi = createApi({
   reducerPath: 'baseApi',
   baseQuery: baseQueryWithRefreshToken,
-  tagTypes: ['Bike', 'Users', "Orders"],
+  tagTypes: ['Bike', 'Users', 'Orders'],
   endpoints: () => ({}),
 });

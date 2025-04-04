@@ -1,5 +1,25 @@
 {
-  "name": "assignment_4_redux",
+  "name": "ride_revolt_redux",
+  "author": {
+    "name": "Khaled Siddique",
+    "email": "khaled@example.com",
+    "url": "https://khaled-siddique.vercel.app"
+  },
+  "description": "A fast and lightweight e-commerce platform built with MongoDB, NodeJS, ExpressJS and ReactJS.",
+  "keywords": [
+    "ecommerce",
+    "react",
+    "typescript",
+    "mongoose",
+    "nodejs",
+    "expressjs",
+    "mongodb"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/khaledssbd/RideRevolt-client.git"
+  },
+  "homepage": "https://riderevolt-frontend.vercel.app",
   "private": true,
   "version": "0.0.0",
   "type": "module",

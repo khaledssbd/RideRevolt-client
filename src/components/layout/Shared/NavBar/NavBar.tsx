@@ -41,13 +41,14 @@ const Navbar = () => {
   ];
 
   return (
-    // <nav className="sticky top-0 z-50 w-full border-b bg-transparent/80 backdrop-blur">
+    // <header className="sticky top-0 z-50 w-full border-b bg-transparent/80 backdrop-blur">
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative h-16 md:h-20">
-          {/* <!-- Menu for Small Device--> */}
+          {/* <!-- Menu & Small Device for Small Device--> */}
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             <Drawer>
+              {/* <!-- Menu for Small Device--> */}
               <DrawerTrigger asChild>
                 <Button
                   variant="default"
