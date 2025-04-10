@@ -17,9 +17,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/khaledssbd/RideRevolt-client.git"
+    "url": "git+https://github.com/khaledssbd/RideRevolt-client.git"
   },
-  "homepage": "https://riderevolt-frontend.vercel.app",
+  "bugs": {
+    "url": "https://github.com/khaledssbd/RideRevolt-client/issues"
+  },
+  "homepage": "https://github.com/khaledssbd/RideRevolt-client#readme",
   "private": true,
   "version": "0.0.0",
   "type": "module",
